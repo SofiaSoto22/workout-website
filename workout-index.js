@@ -15,16 +15,39 @@ document.addEventListener('DOMContentLoaded', async function(){
     const data = await response.json();
     console.log(data);
     for (let i=0; i<data.length; i++){
-  let exerciseName = data[i].name;
-  let exerciseEquipment = data[i].equipment;
-  let exerciseMuscle = data[i].muscle;
-  let exerciseInstructions = data[i].instructions;
-  exercise.push([exerciseName, exerciseEquipment, exerciseMuscle, exerciseInstructions])
+      let exerciseName = data[i].name.replaceAll("-", " ");
+      let exerciseEquipment = data[i].equipment.replaceAll("_", "");
+      let exerciseMuscle = data[i].muscle;
+      let exerciseInstructions = data[i].instructions;
+      exercise.push([exerciseName, exerciseEquipment, exerciseMuscle, exerciseInstructions])
     }
     const grid = new gridjs.Grid({
-    columns:['Name', 'Equipment', 'Muscle', 'Instructions'],
-    data: exercise
-  }).render(document.getElementById('grid'));
+      columns:[{
+        name:'Name',
+        width: 150,
+        resizable: true,
+        sort: true,
+      }, {
+        name: 'Equipment', 
+        width: 200,
+        resizable: true,
+      }, {
+        name:'Muscle',
+        width: 150,
+        resizable: true,
+      }, {
+        name:'Instructions'
+        
+      }],
+      search: true,
+      fixedHeader: true,
+      height: '500px',
+      data: exercise,
+
+    }).render(document.getElementById('grid'));
+
+    document.getElementById("grid").style.textTransform = "capitalize";
+
   }
   catch (error){
     console.log(error);
@@ -32,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 })
 
 
- 
+
 
 
 // document.addEventListener('DOMContentLoaded', function(){
