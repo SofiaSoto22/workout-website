@@ -9,22 +9,45 @@ let exercise = []
 const urlParams = new URLSearchParams(window.location.search);
 const queryParam = urlParams.get('type');
 const apiURL = "https://api.api-ninjas.com/v1/exercises?type="+ queryParam;
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 document.addEventListener('DOMContentLoaded', async function(){
   try{
     const response =  await fetch(apiURL, options)
     const data = await response.json();
     console.log(data);
     for (let i=0; i<data.length; i++){
-  let exerciseName = data[i].name;
-  let exerciseEquipment = data[i].equipment;
-  let exerciseMuscle = data[i].muscle;
-  let exerciseInstructions = data[i].instructions;
-  exercise.push([exerciseName, exerciseEquipment, exerciseMuscle, exerciseInstructions])
+      let exerciseName = capitalizeFirstLetter(data[i].name.replaceAll("-", " "));
+      let exerciseEquipment = capitalizeFirstLetter(data[i].equipment.replaceAll("_", " "));
+      let exerciseMuscle = capitalizeFirstLetter(data[i].muscle);
+      let exerciseInstructions = capitalizeFirstLetter(data[i].instructions);
+      exercise.push([exerciseName, exerciseEquipment, exerciseMuscle, exerciseInstructions])
     }
     const grid = new gridjs.Grid({
-    columns:['Name', 'Equipment', 'Muscle', 'Instructions'],
-    data: exercise
-  }).render(document.getElementById('grid'));
+      columns:[{
+        name:'Name',
+        width: '100px',
+        sort: true,
+      }, {
+        name: 'Equipment', 
+        width: '100px',
+        
+      }, {
+        name:'Muscle',
+        width: '80px',
+      }, {
+        name:'Instructions',
+        width: '250px',
+
+      }],
+      resizable: true,
+      search: true,
+      fixedHeader: true,
+      height: '500px',
+      data: exercise,
+
+    }).render(document.getElementById('grid'));
   }
   catch (error){
     console.log(error);
@@ -32,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 })
 
 
- 
+
 
 
 // document.addEventListener('DOMContentLoaded', function(){
