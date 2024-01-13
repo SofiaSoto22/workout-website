@@ -72,3 +72,15 @@ body{
 .tile a {
 	text-decoration: none;
 }
+.dropdown{
+	position: absolute !important;
+	right: 70px;
+}
+#dropdownMenu2{
+	background-color: #101820;
+	border-color: #101820;
+}
+.dropdown-item a{
+	text-decoration: none !important;
+	color: black;
+}
