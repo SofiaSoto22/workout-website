@@ -1,3 +1,4 @@
+
 const apiKey = "CWFJDniy+DMLTaxW85tBtQ==7CXn7WkB1J46cXgA"
 const options = {
   method: "GET",
@@ -44,21 +45,25 @@ document.addEventListener('DOMContentLoaded', async function(){
       exercise.push([exerciseName, exerciseEquipment, exerciseMuscle, exerciseInstructions])
 
     }
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    console.log(vw);
+    let hideColumn = vw < 576 ? true : false;
     const grid = new gridjs.Grid({
       columns:[{
         name:'Name',
-        width: '100px',
+        width: '20%',
         sort: true,
       }, {
         name: 'Equipment', 
-        width: '100px',
+        width: '20%',
 
       }, {
         name:'Muscle',
-        width: '80px',
+        width: '15%',
       }, {
         name:'Instructions',
-        width: '250px',
+        width: '45%',
+        hidden: hideColumn,
 
       }],
       pagination: {

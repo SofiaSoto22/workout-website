@@ -3,6 +3,11 @@ body{
 	background-color: #101820 !important;
 	color: white !important;
 }
+header{
+	position: sticky;
+	top: 0;	
+	z-index: 100;
+}
 #header-nav{
 	background-color: #ffa600;
 	color: #101820;
@@ -16,6 +21,7 @@ body{
 	margin: 10px 10px 10px 10px;
 	background-size: contain;
 }
+
 h2{
 	padding: 40px;
 }
@@ -60,11 +66,11 @@ h2{
 	transition: background-color 0.5s ease;
 }
 #tiles{
-	display: flex;
-	flex-direction: row;
-	gap: 15px;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 	justify-content: center;
 	margin-bottom: 40px;
+	gap: 15px;
 }
 .tile i{
 	font-size: 1.5em;
@@ -178,23 +184,18 @@ q {
 /*** Medium devices only ***/
 @media (min-width: 768px) and (max-width: 991px) {
 	#tiles{
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		justify-content: center;
-		margin-bottom: 40px;
-		min-height: 100vh;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 2fr 2fr 2fr;
 	}
 	.tile{
 		padding: 5px;
-		width: 300px;
-		height: 100px;
+		width: 150px;
+		height: 90px;
 		background-color: lightgrey;
 		border-radius: 5px;
 	}
 	.tile:hover{
-		width: 315px;
+		width: 200px;
 		transition: width 0.5s;
 	}
 }
@@ -202,46 +203,36 @@ q {
 /***Small devices only***/
 @media (min-width: 576px) and (max-width: 767px) {
 	#tiles{
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		justify-content: center;
-		margin-bottom: 40px;
-		min-height: 100vh;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 2fr 2fr;
 	}
 	.tile{
 		padding: 5px;
-		width: 300px;
-		height: 100px;
+		width: 150px;
+		height: 90px;
 		background-color: lightgrey;
 		border-radius: 5px;
 	}
 	.tile:hover{
-		width: 315px;
+		width: 200px;
 		transition: width 0.5s;
 	}
 }
 /*** Extra Small devices only***/
 @media (max-width: 575px) {
 	#tiles{
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		justify-content: center;
-		margin-bottom: 40px;
-		min-height: 100vh;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 2fr 2fr;
 	}
 	.tile{
 		padding: 5px;
-		width: 300px;
-		height: 100px;
+		width: 150px;
+		height: 90px;
 		background-color: lightgrey;
 		border-radius: 5px;
 	}
 	.tile:hover{
-		width: 315px;
+		width: 200px;
 		transition: width 0.5s;
 	}
 }
