@@ -1,4 +1,5 @@
 
+
 const apiKey = "CWFJDniy+DMLTaxW85tBtQ==7CXn7WkB1J46cXgA"
 const options = {
   method: "GET",
@@ -87,12 +88,3 @@ document.addEventListener('DOMContentLoaded', async function(){
   }
 })
 
-// document.addEventListener('DOMContentLoaded', function(){
-//   const grid = new gridjs.Grid({
-//     columns:['Name', 'Age', 'Email'],
-//     data:[
-//       ['John Doe', 30, 'john@example.com'],
-//       ['Jane Doe', 28, 'jane@gmail.com'],
-//       ]
-//   }).render(document.getElementById('grid'));
-// });
