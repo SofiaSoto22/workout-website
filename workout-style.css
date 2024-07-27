@@ -121,7 +121,21 @@ h2 {
 .tile a {
 	text-decoration: none;
 }
-
+.amsdropdown {
+  position: relative;
+  display: inline-block;
+}
+.ams-locations {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 12px 16px;
+	z-index: 1;
+  }
+  .amsdropdown:hover .ams-locations {
+	display: block;
+  }
 /* Slideshow container */
 .slideshow-container {
 	position: relative;
