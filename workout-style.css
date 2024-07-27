@@ -1,13 +1,21 @@
 body{
-	font-family: 'Kanit', sans-serif !important;
-	background-color: #101820 !important;
-	color: white !important;
+	font-family: 'Kanit', sans-serif;
+	background-color: #101820;
+	color: white;
 }
-#header-nav{
+header{
+	position: sticky;
+	top: 0;	
+	z-index: 100;
+}
+#header-nav {
 	background-color: #ffa600;
 	color: #101820;
+	justify-content: space-between;
+	padding: 0 10px;
 }
-.logo{
+
+.logo {
 	background:url(logo.svg);
 	background-repeat: no-repeat;
 	width: 60px;
@@ -15,9 +23,37 @@ body{
 	margin: 10px 10px 10px 10px;
 	background-size: contain;
 }
-.mainPic{
-	margin-top: 20px;
+#logo-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
+#header-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 70px;
+	gap: 10px;
+}
+#header-buttons a, #header-buttons button, .dropdown-item a, .dropdown-menu  {
+    color: black;
+    background-color: #ffa600;
+	text-decoration: none;
+	border: none;
+}
+#header-buttons a:hover, #header-buttons button:hover, .dropdown-item:hover{
+	font-weight: bold;
+	background-color: #ffa600;
+}
+.mainPic{
+	position: relative;
+	margin-top: 20px;
+} 
+.mainPic img {
+	width: 100%;
+	height: 400px;
+}    
+
 .title{
 	background-color: rgba(0, 0, 0, .6);
 	padding: 20px;
@@ -29,16 +65,23 @@ body{
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+h2 {
+	padding: 40px;
+}
 #footer{
 	background-color: #ffa600;
 	min-height: 30px;
 	color: #101820;
 	padding: 20px;
 }
+#hours span, #address span{
+	font-weight: bold;
+}
 .img-carousel{
 	width: 100%;
 	height: 200px;
 	object-fit: contain;
+	background-color: #101820;
 }
 .tile{
 	padding: 5px;
@@ -47,12 +90,18 @@ body{
 	background-color: lightgrey;
 	border-radius: 5px;
 }
+.tile:hover{
+	background-color: #ffa600;
+	width: 115px;
+	transition: width 0.5s;
+	transition: background-color 0.5s ease;
+}
 #tiles{
-	display: flex;
-	flex-direction: row;
-	gap: 15px;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 	justify-content: center;
 	margin-bottom: 40px;
+	gap: 15px;
 }
 .tile i{
 	font-size: 1.5em;
@@ -72,15 +121,244 @@ body{
 .tile a {
 	text-decoration: none;
 }
-.dropdown{
-	position: absolute !important;
-	right: 70px;
+.amsdropdown {
+  position: relative;
+  display: inline-block;
 }
-#dropdownMenu2{
-	background-color: #101820;
-	border-color: #101820;
+.ams-locations {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 12px 16px;
+	z-index: 1;
+  }
+  .amsdropdown:hover .ams-locations {
+	display: block;
+  }
+/* Slideshow container */
+.slideshow-container {
+	position: relative;
+	background: lightgrey;
+	margin-bottom: 20px;
 }
-.dropdown-item a{
-	text-decoration: none !important;
-	color: black;
+
+/* Slides */
+.testimonialSlides {
+	display: none;
+	padding: 50px;
+	text-align: center;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -30px;
+	padding: 16px;
+	color: #888;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+	text-align: center;
+	background: #f1f1f1f1;
+	background-color: lightgrey;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Add an italic font style to all quotes */
+q {
+	font-style: italic;
+	color: black;}
+
+/* Add a blue color to the author */
+.author {color: black;}
+
+/***counter section***/
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25% !important;
+  padding: 0 5px;
+}
+
+.row {margin-bottom: 5px;}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}
+
+.fa {font-size:50px;}
+/***Membership page***/
+.priceColumns {
+  margin-top: 30px;
+  float: left;
+  width: 33.3%;
+  padding: 8px;
+}
+
+.price {
+  list-style-type: none;
+  padding: 0;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+  background-color: grey;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+.signUp {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 45px;
+  text-decoration: none;
+}
+
+.marquee {
+            margin-bottom: 30px;
+	        padding: 10px;
+            background-color: #101820;
+            overflow: hidden;
+            position: relative;
+            height: 120px;
+            width: 100%;
+            white-space: nowrap;
+            font-family: "Rubik Mono One";
+        }
+
+        .marquee p {
+        	color: white;
+        	font-size: 100px;
+            position: absolute;
+            width: auto;
+            height: 100%;
+            margin: 10px;
+            line-height: 50px;
+            text-align: center;
+            /* Start off the right edge */
+          transform: translateX(100%);
+            /* Animate to the left */
+            animation: scroll-left 14s linear infinite;
+        }
+         @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+/*** Medium devices only ***/
+@media (min-width: 768px) and (max-width: 991px) {
+	#tiles{
+		display: grid;
+		grid-template-columns: 2fr 2fr 2fr;
+	}
+	.tile{
+		padding: 5px;
+		width: 150px;
+		height: 90px;
+		background-color: lightgrey;
+		border-radius: 5px;
+	}
+	.tile:hover{
+		width: 200px;
+		transition: width 0.5s;
+	}
+}
+
+/***Small devices only***/
+@media (min-width: 576px) and (max-width: 767px) {
+	#tiles{
+		display: grid;
+		grid-template-columns: 2fr 2fr;
+	}
+	.tile{
+		padding: 5px;
+		width: 150px;
+		height: 90px;
+		background-color: lightgrey;
+		border-radius: 5px;
+	}
+	.tile:hover{
+		width: 200px;
+		transition: width 0.5s;
+	}
+}
+/*** Extra Small devices only***/
+@media (max-width: 575px) {
+	#tiles{
+		display: grid;
+		grid-template-columns: 2fr 2fr;
+	}
+	.tile{
+		padding: 5px;
+		width: 150px;
+		height: 90px;
+		background-color: lightgrey;
+		border-radius: 5px;
+	}
+	.tile:hover{
+		width: 200px;
+		transition: width 0.5s;
+	}
 }
